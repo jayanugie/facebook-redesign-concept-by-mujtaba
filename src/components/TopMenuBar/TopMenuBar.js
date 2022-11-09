@@ -4,7 +4,7 @@ import { Navbar, Dropdown, Avatar } from "flowbite-react";
 
 function TopMenuBar() {
   return (
-    <div>
+    <div className="sticky top-0">
       <Navbar fluid={true} rounded={true}>
         <Navbar.Brand href="/" className="navbar">
           <img src="facebook.png" className="w-10 lg:ml-7" alt="facebook" />

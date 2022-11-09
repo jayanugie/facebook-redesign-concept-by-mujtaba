@@ -7,9 +7,13 @@ import TopMenuBar from '../components/TopMenuBar/TopMenuBar';
 
 function Home() {
   return (
-    <div>
+    <div className='container-fluid'>
       <TopMenuBar /> 
       <StatusBar />
+      <Feeds />
+      <Feeds />
+      <Feeds />
+      <Feeds />
       <Feeds />
 
     </div>

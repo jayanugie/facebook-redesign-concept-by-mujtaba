@@ -3,7 +3,7 @@ import React from "react";
 function StatusBar() {
   return (
     <div className="flex justify-center mt-7">
-      <div className="container mx-auto lg:px-96">
+      <div className="container mx-auto lg:px-96 px-2">
         <div className="flex">
           <input
             placeholder="What's on your mind, Paul?"

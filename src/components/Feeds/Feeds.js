@@ -9,12 +9,12 @@ function Feeds() {
 
   return (
     <div className="flex justify-center mt-3.5">
-      <div className="container mx-auto lg:px-96">
+      <div className="container mx-auto lg:px-96 px-2">
         <div className="relative">
           <img
             src="more.png"
             alt="more"
-            className="absolute top-5 right-5 w-5 hover:cursor-pointer rounded-lg hover:bg-gray-200 "
+            className="absolute top-4 right-5 w-7 hover:cursor-pointer p-1 rounded-full hover:bg-gray-200 "
             onClick={clickMore}
           />
           {isShown && (
@@ -52,15 +52,27 @@ function Feeds() {
           </div>
           <div className="mb-5 mr-8 flex justify-end">
             <div className="flex mr-3">
-              <img src="like.png" alt="like" className="w-6 h-6" />
+              <img
+                src="like.png"
+                alt="like"
+                className="w-6 h-6 hover:cursor-pointer"
+              />
               <p className="text-xs text-gray-500">4</p>
             </div>
             <div className="flex mr-3">
-              <img src="comments.png" alt="comment" className="w-6 h-6" />
+              <img
+                src="comments.png"
+                alt="comment"
+                className="w-6 h-6 hover:cursor-pointer"
+              />
               <p className="text-xs text-gray-500">2</p>
             </div>
             <div className="flex">
-              <img src="share.png" alt="share" className="w-6 h-6" />
+              <img
+                src="share.png"
+                alt="share"
+                className="w-6 h-6 hover:cursor-pointer"
+              />
               <p className="text-xs text-gray-500">1</p>
             </div>
           </div>
