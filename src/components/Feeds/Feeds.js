@@ -1,6 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 
 function Feeds() {
+  const [isShown, setIsShown] = useState(false);
+
+  const clickMore = () => {
+    setIsShown((current) => !current);
+  };
+
   return (
     <div className="flex justify-center mt-3.5">
       <div className="container mx-auto lg:px-96">
@@ -8,8 +14,21 @@ function Feeds() {
           <img
             src="more.png"
             alt="more"
-            className="absolute top-5 right-5 w-5 hover:cursor-pointer"
+            className="absolute top-5 right-5 w-5 hover:cursor-pointer rounded-lg hover:bg-gray-200 "
+            onClick={clickMore}
           />
+          {isShown && (
+            <div className="absolute top-10 right-8 border bg-white rounded-md">
+              <div className="flex flex-col text-xs">
+                <button className="p-2 hover:bg-sky-500 hover:text-white hover:rounded-t-md">
+                  Edit Post
+                </button>
+                <button className="p-2 hover:bg-red-500 hover:text-white hover:rounded-b-md">
+                  Delete Post
+                </button>
+              </div>
+            </div>
+          )}
         </div>
         <div className="border border-gray-100 rounded-md bg-white">
           <div className="p-8 ">
@@ -31,7 +50,7 @@ function Feeds() {
               </p>
             </div>
           </div>
-          <div className="mb-5 mr-5 flex justify-end">
+          <div className="mb-5 mr-8 flex justify-end">
             <div className="flex mr-3">
               <img src="like.png" alt="like" className="w-6 h-6" />
               <p className="text-xs text-gray-500">4</p>
