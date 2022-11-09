@@ -2,7 +2,7 @@ import React from "react";
 
 function StatusBar() {
   return (
-    <div className="flex justify-center m-5">
+    <div className="flex justify-center mt-7">
       <div className="container mx-auto lg:px-96">
         <div className="flex">
           <input
