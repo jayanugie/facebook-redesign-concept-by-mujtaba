@@ -1,6 +1,6 @@
 import React from "react";
 
-function Feeds() {
+function StatusBar() {
   return (
     <div className="flex justify-center m-5">
       <div className="container mx-auto lg:px-96">
@@ -18,4 +18,4 @@ function Feeds() {
   );
 }
 
-export default Feeds;
+export default StatusBar;
