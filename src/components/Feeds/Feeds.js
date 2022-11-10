@@ -1,8 +1,12 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { Button, Modal, Label, TextInput } from "flowbite-react";
 
 function Feeds() {
   const [feeds, setFeeds] = useState(null);
+
+  // modal edit data
+  const [visible, setVisible] = useState(false);
 
   // get data
   const getData = async () => {
@@ -63,13 +67,40 @@ function Feeds() {
                   </div>
                 </div>
                 <div className="mb-5 mr-8 flex justify-end">
-                  <div className="flex mr-3 hover:bg-sky-300 rounded-md">
-                    <img
-                      src="edit.png"
-                      alt="edit"
-                      className="w-6 h-6 hover:cursor-pointer"
-                    />
-                  </div>
+                  <React.Fragment>
+                    <div className="flex mr-3 hover:bg-sky-300 rounded-md">
+                      <img
+                        src="edit.png"
+                        alt="edit"
+                        className="w-6 h-6 hover:cursor-pointer"
+                        onClick={() => setVisible(true)}
+                      />
+                    </div>
+                    <Modal
+                      show={visible}
+                      size="md"
+                      popup={true}
+                      onClose={() => setVisible(false)}
+                    >
+                      <Modal.Header />
+                      <Modal.Body>
+                        <div className="space-y-3">
+                          <div>
+                            <div className="mb-2 block">
+                              <Label htmlFor="text" value="Edit your post" />
+                            </div>
+                            <TextInput
+                              placeholder="What's on your mind, Paul?"
+                              required={true}
+                            />
+                          </div>
+                          <div className="w-full">
+                            <Button className="p-0 rounded-md">Update</Button>
+                          </div>
+                        </div>
+                      </Modal.Body>
+                    </Modal>
+                  </React.Fragment>
                   <div className="flex mr-3 hover:bg-red-300 rounded-full">
                     <img
                       src="trash.png"
