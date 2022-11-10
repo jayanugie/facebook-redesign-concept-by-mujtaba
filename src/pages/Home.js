@@ -11,10 +11,7 @@ function Home() {
       <TopMenuBar /> 
       <StatusBar />
       <Feeds />
-      <Feeds />
-      <Feeds />
-      <Feeds />
-      <Feeds />
+
 
     </div>
   )
