@@ -2,20 +2,24 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 
 function Feeds() {
-  const [isShown, setIsShown] = useState(false);
   const [feeds, setFeeds] = useState(null);
 
-  // func 'more' button
-  const clickMore = () => {
-    setIsShown((current) => !current);
-  };
-
-  // func get data
+  // get data
   const getData = async () => {
     const get = await axios.get("http://localhost:4000/feeds");
     const result = get.data;
     setFeeds(result);
     console.log(result);
+  };
+
+  // delete data
+  const deleteData = async (id, e) => {
+    e.preventDefault();
+    const result = await axios.delete(
+      `http://localhost:4000/feeds/delete/${id}`
+    );
+    alert(result.data.message);
+    window.location.reload();
   };
 
   useEffect(() => {
@@ -35,20 +39,7 @@ function Feeds() {
                   src="more.png"
                   alt="more"
                   className="absolute top-4 right-5 w-7 hover:cursor-pointer p-1 rounded-full hover:bg-gray-200 "
-                  onClick={clickMore}
                 />
-                {isShown && (
-                  <div className="absolute top-10 right-8 border bg-white rounded-md">
-                    <div className="flex flex-col text-xs">
-                      <button className="p-2 hover:bg-sky-500 hover:text-white hover:rounded-t-md">
-                        Edit Post
-                      </button>
-                      <button className="p-2 hover:bg-red-500 hover:text-white hover:rounded-b-md">
-                        Delete Post
-                      </button>
-                    </div>
-                  </div>
-                )}
               </div>
               <div className="border border-gray-100 rounded-md bg-white">
                 <div className="p-8 ">
@@ -72,6 +63,21 @@ function Feeds() {
                   </div>
                 </div>
                 <div className="mb-5 mr-8 flex justify-end">
+                  <div className="flex mr-3 hover:bg-sky-300 rounded-md">
+                    <img
+                      src="edit.png"
+                      alt="edit"
+                      className="w-6 h-6 hover:cursor-pointer"
+                    />
+                  </div>
+                  <div className="flex mr-3 hover:bg-red-300 rounded-full">
+                    <img
+                      src="trash.png"
+                      alt="delete"
+                      className="w-6 h-6 hover:cursor-pointer"
+                      onClick={(e) => deleteData(post.id, e)}
+                    />
+                  </div>
                   <div className="flex mr-3">
                     <img
                       src="like.png"

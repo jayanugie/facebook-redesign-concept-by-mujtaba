@@ -4,7 +4,7 @@ import React, { useState } from "react";
 function StatusBar() {
   const [post, setPost] = useState("");
 
-  // func create post
+  // create post
   const createPost = async (e) => {
     if (!post) {
       alert("Can not be empty");
