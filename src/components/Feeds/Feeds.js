@@ -1,12 +1,11 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Button, Modal, Label, TextInput } from "flowbite-react";
 
 function Feeds() {
   const [feeds, setFeeds] = useState(null);
-
-  // modal edit data
-  const [visible, setVisible] = useState(false);
+  const [visibleMore, setVisibleMore] = useState(0);
+  const [visibleEdit, setVisibleEdit] = useState(0);
+  const [editBody, setEditBody] = useState("");
 
   // get data
   const getData = async () => {
@@ -26,6 +25,22 @@ function Feeds() {
     window.location.reload();
   };
 
+  // edit data
+  const editData = async (id) => {
+    if (!editBody) {
+      alert("Can not be empty");
+    } else {
+      const result = await axios.put(
+        `http://localhost:4000/feeds/update/${id}`,
+        {
+          body: editBody,
+        }
+      );
+      alert(result.data.message);
+      window.location.reload();
+    }
+  };
+
   useEffect(() => {
     getData();
   }, []);
@@ -43,7 +58,53 @@ function Feeds() {
                   src="more.png"
                   alt="more"
                   className="absolute top-4 right-5 w-7 hover:cursor-pointer p-1 rounded-full hover:bg-gray-200 "
+                  onClick={() =>
+                    visibleMore === post.id
+                      ? setVisibleMore(0)
+                      : setVisibleMore(post.id)
+                  }
                 />
+                <div className={visibleMore === post.id ? "block" : "hidden"}>
+                  <div className="absolute top-10 right-8 border bg-white rounded-md">
+                    <div className="flex flex-col text-xs">
+                      <button
+                        className="p-2 hover:bg-sky-500 hover:text-white hover:rounded-t-md"
+                        onClick={() =>
+                          visibleEdit === post.id
+                            ? setVisibleEdit(0)
+                            : setVisibleEdit(post.id)
+                        }
+                      >
+                        Edit Post
+                      </button>
+                      <button
+                        className="p-2 hover:bg-red-500 hover:text-white hover:rounded-b-md"
+                        onClick={(e) => deleteData(post.id, e)}
+                      >
+                        Delete Post
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                {/* edit */}
+                <div className={visibleEdit === post.id ? "block" : "hidden"}>
+                  <div className="border rounded-md bg-sky-900 absolute right-32 top-10 p-2 w-60">
+                    <div className="space-y-2 flex flex-col">
+                      <input
+                        onChange={(e) => setEditBody(e.target.value)}
+                        className="outline outline-1 outline-sky-500 rounded-sm text-sm p-0.5"
+                        placeholder="What's on your mind, Paul?"
+                      />
+                      <button
+                        className="bg-sky-500 text-white rounded-md"
+                        onClick={() => editData(post.id)}
+                      >
+                        Update
+                      </button>
+                    </div>
+                  </div>
+                </div>
               </div>
               <div className="border border-gray-100 rounded-md bg-white">
                 <div className="p-8 ">
@@ -67,48 +128,6 @@ function Feeds() {
                   </div>
                 </div>
                 <div className="mb-5 mr-8 flex justify-end">
-                  <React.Fragment>
-                    <div className="flex mr-3 hover:bg-sky-300 rounded-md">
-                      <img
-                        src="edit.png"
-                        alt="edit"
-                        className="w-6 h-6 hover:cursor-pointer"
-                        onClick={() => setVisible(true)}
-                      />
-                    </div>
-                    <Modal
-                      show={visible}
-                      size="md"
-                      popup={true}
-                      onClose={() => setVisible(false)}
-                    >
-                      <Modal.Header />
-                      <Modal.Body>
-                        <div className="space-y-3">
-                          <div>
-                            <div className="mb-2 block">
-                              <Label htmlFor="text" value="Edit your post" />
-                            </div>
-                            <TextInput
-                              placeholder="What's on your mind, Paul?"
-                              required={true}
-                            />
-                          </div>
-                          <div className="w-full">
-                            <Button className="p-0 rounded-md">Update</Button>
-                          </div>
-                        </div>
-                      </Modal.Body>
-                    </Modal>
-                  </React.Fragment>
-                  <div className="flex mr-3 hover:bg-red-300 rounded-full">
-                    <img
-                      src="trash.png"
-                      alt="delete"
-                      className="w-6 h-6 hover:cursor-pointer"
-                      onClick={(e) => deleteData(post.id, e)}
-                    />
-                  </div>
                   <div className="flex mr-3">
                     <img
                       src="like.png"
