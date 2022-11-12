@@ -89,7 +89,7 @@ function Feeds() {
 
                 {/* edit */}
                 <div className={visibleEdit === post.id ? "block" : "hidden"}>
-                  <div className="border rounded-md bg-sky-900 absolute right-32 top-10 p-2 w-60">
+                  <div className="border rounded-md bg-gray-100 absolute right-32 top-10 p-2 w-64 lg:w-80">
                     <div className="space-y-2 flex flex-col">
                       <input
                         onChange={(e) => setEditBody(e.target.value)}
@@ -97,7 +97,7 @@ function Feeds() {
                         placeholder="What's on your mind, Paul?"
                       />
                       <button
-                        className="bg-sky-500 text-white rounded-md"
+                        className="hover:bg-sky-500 border hover:text-white text-xs rounded-sm w-1/2"
                         onClick={() => editData(post.id)}
                       >
                         Update
