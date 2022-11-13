@@ -1,0 +1,1 @@
+Technical Test for Full-stack in BigBox (client side)
