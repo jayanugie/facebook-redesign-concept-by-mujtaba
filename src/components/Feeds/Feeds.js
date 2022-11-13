@@ -55,7 +55,7 @@ function Feeds() {
             <div className="container mx-auto lg:px-96 px-2">
               <div className="relative">
                 <img
-                  src="more.png"
+                  src="/more.png"
                   alt="more"
                   className="absolute top-4 right-5 w-7 hover:cursor-pointer p-1 rounded-full hover:bg-gray-200 "
                   onClick={() =>
@@ -110,7 +110,7 @@ function Feeds() {
                 <div className="p-8 ">
                   <div className="flex">
                     <img
-                      src="profile-feeds.png"
+                      src="/profile-feeds.png"
                       className="w-12 shadow-md border-2 border-white rounded-full "
                       alt="profile"
                     />
@@ -130,7 +130,7 @@ function Feeds() {
                 <div className="mb-5 mr-8 flex justify-end">
                   <div className="flex mr-3">
                     <img
-                      src="like.png"
+                      src="/like.png"
                       alt="like"
                       className="w-6 h-6 hover:cursor-pointer"
                     />
@@ -138,7 +138,7 @@ function Feeds() {
                   </div>
                   <div className="flex mr-3">
                     <img
-                      src="comments.png"
+                      src="/comments.png"
                       alt="comment"
                       className="w-6 h-6 hover:cursor-pointer"
                     />
@@ -146,7 +146,7 @@ function Feeds() {
                   </div>
                   <div className="flex">
                     <img
-                      src="share.png"
+                      src="/share.png"
                       alt="share"
                       className="w-6 h-6 hover:cursor-pointer"
                     />

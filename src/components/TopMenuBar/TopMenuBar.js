@@ -7,12 +7,12 @@ function TopMenuBar() {
     <div className="sticky top-0">
       <Navbar fluid={true} rounded={true}>
         <Navbar.Brand href="/" className="navbar">
-          <img src="facebook.png" className="w-10 lg:ml-7" alt="facebook" />
+          <img src="/facebook.png" className="w-10 lg:ml-7" alt="facebook" />
         </Navbar.Brand>
         <div className="flex md:order-2">
           <div className="pr-2 pt-3">
             <img
-              src="search.png"
+              src="/search.png"
               className="hover:cursor-pointer w-6"
               alt="search"
             />

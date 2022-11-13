@@ -29,7 +29,7 @@ function StatusBar() {
           />
           <button className="bg-white rounded-r-md border-y-2 border-r-2 border-gray-100 hover:bg-sky-300 hover:cursor-default">
             <img
-              src="up-arrow.png"
+              src="/up-arrow.png"
               className="h-4 mx-3 hover:rotate-90 hover:cursor-pointer"
               alt="button"
             />
